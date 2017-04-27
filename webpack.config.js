@@ -6,6 +6,7 @@ module.exports={
     entry:'./src/components/GalleryByReactApp.js',
     output: {
         path: __dirname + "/build",
+        // publicPath: '/assets/',
         filename: "[name]-[hash].js"
     },
     devtool: 'eval-source-map',

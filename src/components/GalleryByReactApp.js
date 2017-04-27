@@ -1,22 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../style/main.css';
-class Xiatian extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {value:"22222222"};
+//获取图片相关的资源
 
+var imagesDatas = require('../data/imageData.json');
+
+imagesDatas = (function(arr) {
+    for (var i = 0;i < arr.length;i++){
+        var signalImageData = arr[i];
+        signalImageData.imageURL = 'src/img/'+signalImageData.fileName;
+        arr[i] = signalImageData;
     }
+    return arr;
+})(imagesDatas);
 
+class ImgFigure extends React.Component{
     render(){
-        return (<div>
-            <input ref="txt1" type="text" value="1231haha111"/>
-            <span>{this.state.value}</span>
-        </div>);
+        return(
+            <figure className="img-figure">
+                <img src={this.props.data.imageURL} alt={this.props.data.title}/>
+                <figcaption>
+                    <h2 className="title">{this.props.data.title}</h2>
+                </figcaption>
+            </figure>
+        )
+    }
+}
+class GalleryByReactApp extends React.Component{
+    constructor() {
+        super();
+    }
+    render(){
+        var conUnits = [];
+        var imgFigures=[];
+        imagesDatas.forEach(function (e) {
+            imgFigures.push(<ImgFigure key={e.fileName} data={e}/>);
+        });
+        return (<section className="stage">
+            <section className="img-sec">
+                {imgFigures}
+            </section>
+            <nav className="controller-nav">
+            </nav>
+        </section>);
     }
 }
 
 ReactDOM.render(
-    <Xiatian />,
+    <GalleryByReactApp />,
     document.getElementById('root')
 );
