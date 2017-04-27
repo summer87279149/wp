@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../style/main.css';
+
 //获取图片相关的资源
-
 var imagesDatas = require('../data/imageData.json');
-
 imagesDatas = (function(arr) {
     for (var i = 0;i < arr.length;i++){
         var signalImageData = arr[i];
-        signalImageData.imageURL = 'src/img/'+signalImageData.fileName;
+        signalImageData.imageURL = require('../img/'+signalImageData.fileName);
         arr[i] = signalImageData;
     }
     return arr;
@@ -26,6 +25,7 @@ class ImgFigure extends React.Component{
         )
     }
 }
+
 class GalleryByReactApp extends React.Component{
     constructor() {
         super();
