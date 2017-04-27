@@ -3,7 +3,7 @@
  */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: __dirname + "/app/main.js",
@@ -34,6 +34,10 @@ module.exports = {
     ],
 
     plugins: [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin(),//优化生成的chunk,合并相同的chunk
+        new webpack.NoErrorsPlugin(),    //保证编译过程不能出错
         new HtmlWebpackPlugin({
             template: __dirname + "/app/index.tmpl.html"
         }),
