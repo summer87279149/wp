@@ -13,6 +13,7 @@ imagesDatas = (function(arr) {
     return arr;
 })(imagesDatas);
 
+
 class ImgFigure extends React.Component{
     render(){
         return(
