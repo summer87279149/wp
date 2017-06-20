@@ -28,6 +28,7 @@ class ImgFigure extends React.Component{
 }
 
 class GalleryByReactApp extends React.Component{
+    
     constructor() {
         super();
     }

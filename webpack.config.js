@@ -19,7 +19,8 @@ module.exports={
             },
             {
                 test:/\.js$/,
-                loader:'react-hot-loader!babel-loader',exclude:/node_modules/
+                loader:'react-hot-loader!babel-loader',
+                exclude:/node_modules/
             },
             {
                 test: /\.json$/,
